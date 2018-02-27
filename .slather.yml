@@ -1,0 +1,3 @@
+coverage_service: coveralls
+xcodeproj: FreeformJSON.xcodeproj
+scheme: FreeformJSON-iOS
