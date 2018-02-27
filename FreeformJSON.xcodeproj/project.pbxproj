@@ -17,8 +17,6 @@
 		15C48C8220457FE200C1BA5C /* FreeformJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C48C7920457FE200C1BA5C /* FreeformJSON.framework */; };
 		15C48C9020457FEF00C1BA5C /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C48C4220457B7E00C1BA5C /* JSON.swift */; };
 		15C48C9120457FF200C1BA5C /* FreeformJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C48C4520457B8E00C1BA5C /* FreeformJSONTests.swift */; };
-		15C48C962045830D00C1BA5C /* FreeformJSONTests.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15C48C942045830D00C1BA5C /* FreeformJSONTests.plist */; };
-		15C48C972045830D00C1BA5C /* FreeformJSON.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15C48C952045830D00C1BA5C /* FreeformJSON.plist */; };
 		15C48C9B204589B400C1BA5C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 15C48C99204589B400C1BA5C /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -401,8 +399,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C48C9B204589B400C1BA5C /* README.md in Resources */,
-				15C48C972045830D00C1BA5C /* FreeformJSON.plist in Resources */,
-				15C48C962045830D00C1BA5C /* FreeformJSONTests.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

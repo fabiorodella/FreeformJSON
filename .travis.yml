@@ -1,3 +1,4 @@
 language: objective-c
-xcode_project: FreeformJSON.xcodeproj
-xcode_scheme: FreeformJSON-iOS
+osx_image: xcode9.2
+script:
+    - xcodebuild clean test -project FreeformJSON.xcodeproj -scheme FreeformJSON-iOS -destination "platform=iOS Simulator,name=iPhone 7,OS=11.2" -quiet
