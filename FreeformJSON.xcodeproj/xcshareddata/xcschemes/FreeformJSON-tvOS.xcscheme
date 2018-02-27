@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "15C48C7820457FE200C1BA5C"
-               BuildableName = "FreeformJSON_tvOS.framework"
+               BuildableName = "FreeformJSON.framework"
                BlueprintName = "FreeformJSON-tvOS"
                ReferencedContainer = "container:FreeformJSON.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15C48C7820457FE200C1BA5C"
-            BuildableName = "FreeformJSON_tvOS.framework"
+            BuildableName = "FreeformJSON.framework"
             BlueprintName = "FreeformJSON-tvOS"
             ReferencedContainer = "container:FreeformJSON.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15C48C7820457FE200C1BA5C"
-            BuildableName = "FreeformJSON_tvOS.framework"
+            BuildableName = "FreeformJSON.framework"
             BlueprintName = "FreeformJSON-tvOS"
             ReferencedContainer = "container:FreeformJSON.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15C48C7820457FE200C1BA5C"
-            BuildableName = "FreeformJSON_tvOS.framework"
+            BuildableName = "FreeformJSON.framework"
             BlueprintName = "FreeformJSON-tvOS"
             ReferencedContainer = "container:FreeformJSON.xcodeproj">
          </BuildableReference>
