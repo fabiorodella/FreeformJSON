@@ -253,7 +253,7 @@ extension JSON {
 
 extension JSON {
     
-    var rawValue: Any? {
+    public var rawValue: Any? {
         switch self {
         case .bool(let bool):
             return bool
@@ -270,11 +270,11 @@ extension JSON {
         }
     }
     
-    func rawJsonData(withEncoder encoder: JSONEncoder = JSONEncoder()) throws -> Data {
+    public func rawJsonData(withEncoder encoder: JSONEncoder = JSONEncoder()) throws -> Data {
         return try encoder.encode(self)
     }
     
-    func rawJson(withEncoder encoder: JSONEncoder = JSONEncoder()) throws -> String {
+    public func rawJson(withEncoder encoder: JSONEncoder = JSONEncoder()) throws -> String {
         guard let rawJson = try String(data: rawJsonData(withEncoder: encoder), encoding: .utf8) else {
             throw EncodingError.invalidValue(self, EncodingError.Context(codingPath: [], debugDescription: "Could not encode value"))
         }
