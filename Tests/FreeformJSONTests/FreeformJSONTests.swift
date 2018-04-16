@@ -322,6 +322,69 @@ class FreeformJSONTests: XCTestCase {
         XCTAssertNotNil(json.rangeOfCharacter(from: CharacterSet.whitespacesAndNewlines))
     }
     
+    // MARK: Equality
+    
+    func testDifferent() {
+        let object1: JSON = ["name": "test"]
+        let object2: JSON = ["element 1", "element 2"]
+        XCTAssertNotEqual(object1, object2)
+    }
+    
+    // MARK: Mutability
+    
+    func testSetObjectValue() {
+        var object: JSON = [
+            "string": "value",
+            "int": 1,
+            "double": 4.2,
+            "bool": true
+        ]
+        
+        // Change existing property value
+        object["string"] = "abc"
+        XCTAssertEqual(object["string"].string, "abc")
+        
+        // Change existing property type
+        object["string"] = 4.2
+        XCTAssertNil(object["string"].string)
+        XCTAssertEqual(object["string"].number, 4.2)
+        
+        // Add new property
+        XCTAssertNil(object["new"].string)
+        object["new"] = "new"
+        XCTAssertEqual(object["new"].string, "new")
+        
+        // Remove property
+        object["new"] = nil
+        XCTAssertNil(object["new"].string)
+        
+        // Attempt to change non-object
+        let before = object
+        object["string"]["invalid"] = "abc"
+        XCTAssertEqual(before, object)
+    }
+    
+    func testSetArrayValue() {
+        var object: JSON = [
+            "name": "name",
+            "array": [
+                "element 1",
+                "element 2"
+            ]
+        ]
+        
+        // Change with valid index
+        object["array"][0] = "element 0"
+        XCTAssertEqual(object["array"][0].string, "element 0")
+        
+        // Attempt to change non-array
+        let before = object
+        object["name"][0] = "abc"
+        XCTAssertEqual(before, object)
+    }
+    
+    // MARK: Swift PM support
+    
     static var allTests = [
         ("testDecodeObject", testDecodeObject),
         ("testDecodeNestedObject", testDecodeNestedObject),
@@ -337,5 +400,8 @@ class FreeformJSONTests: XCTestCase {
         ("testGetRawValue", testGetRawValue),
         ("testGetRawData", testGetRawData),
         ("testGetRawJson", testGetRawJson),
+        ("testDifferent", testDifferent),
+        ("testSetObjectValue", testSetObjectValue),
+        ("testSetArrayValue", testSetArrayValue)
         ]
 }

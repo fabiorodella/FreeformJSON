@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "FreeformJSON"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "Type-safe freeform JSON data structure with Codable support for Swift"
   s.description  = <<-DESC
   FreeformJSON is a tiny data structure that allows you to create and/or access freeform JSON data in a type safe manner, while still enjoying the benefits of the Codable protocol

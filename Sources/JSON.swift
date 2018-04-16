@@ -235,17 +235,35 @@ extension JSON {
     }
     
     public subscript(key: String) -> JSON {
-        guard case .object(let object) = self else {
-            return .null
+        get {
+            guard case .object(let object) = self else {
+                return .null
+            }
+            return object[key] ?? .null
         }
-        return object[key] ?? .null
+        set {
+            guard case .object(var object) = self else {
+                return
+            }
+            object[key] = newValue
+            self = .object(object)
+        }
     }
     
     public subscript(index: Int) -> JSON {
-        guard case .array(let array) = self else {
-            return .null
+        get {
+            guard case .array(let array) = self else {
+                return .null
+            }
+            return array[index]
         }
-        return array[index]
+        set {
+            guard case .array(var array) = self else {
+                return
+            }
+            array[index] = newValue
+            self = .array(array)
+        }
     }
 }
 
