@@ -46,7 +46,7 @@ class FreeformJSONTests: XCTestCase {
     
     // MARK: Decoding
     
-    func testDecodeObject() {
+    func testDecodeObject() throws {
         let json = """
         {
             "string": "value",
@@ -55,7 +55,7 @@ class FreeformJSONTests: XCTestCase {
             "bool": true
         }
         """
-        let object = try! fromString(json)
+        let object = try fromString(json)
         XCTAssertNil(object.array)
         XCTAssertNotNil(object.object)
         
@@ -75,7 +75,7 @@ class FreeformJSONTests: XCTestCase {
         XCTAssertFalse(object["string"].isNull)
     }
     
-    func testDecodeNestedObject() {
+    func testDecodeNestedObject() throws {
         let json = """
         {
             "name": "outer",
@@ -84,25 +84,25 @@ class FreeformJSONTests: XCTestCase {
             }
         }
         """
-        let object = try! fromString(json)
+        let object = try fromString(json)
         XCTAssertNil(object.array)
         XCTAssertNotNil(object.object)
         XCTAssertEqual(object["name"].string, "outer")
         XCTAssertEqual(object["inner"]["name"].string, "inner")
     }
     
-    func testDecodeObjectWithNull() {
+    func testDecodeObjectWithNull() throws {
         let json = """
         {
             "name": null
         }
         """
-        let object = try! fromString(json)
+        let object = try fromString(json)
         XCTAssertNotNil(object.object)
         XCTAssertNil(object["name"].string)
     }
     
-    func testDecodeArrayOfObject() {
+    func testDecodeArrayOfObject() throws {
         let json = """
         [
             {
@@ -113,32 +113,35 @@ class FreeformJSONTests: XCTestCase {
             }
         ]
         """
-        let object = try! fromString(json)
+        let object = try fromString(json)
         XCTAssertNil(object.object)
         XCTAssertNotNil(object.array)
         XCTAssertEqual(object[0]["name"].string, "first")
         XCTAssertEqual(object[1]["name"].string, "second")
     }
     
-    func testDecodeArrayOfValue() {
+    func testDecodeArrayOfValue() throws {
         let json = """
         [
             "first",
             "second"
         ]
         """
-        let object = try! fromString(json)
+        let object = try fromString(json)
         XCTAssertNil(object.object)
         XCTAssertNotNil(object.array)
         XCTAssertEqual(object[0].string, "first")
         XCTAssertEqual(object[1].string, "second")
     }
     
-    func testDecodeSingle() {
+    func testDecodeFragment() throws {
         let json = """
             "name"
         """
-        XCTAssertThrowsError(try fromString(json))
+        let fragment = try fromString(json)
+        XCTAssertNil(fragment.object)
+        XCTAssertNil(fragment.array)
+        XCTAssertEqual(fragment.string, "name")
     }
     
     func testDecodeInvalid() {
@@ -152,7 +155,7 @@ class FreeformJSONTests: XCTestCase {
     
     // MARK: Encoding
     
-    func testEncodeObject() {
+    func testEncodeObject() throws {
         let object: JSON = [
             "string": "value",
             "int": 1,
@@ -173,25 +176,26 @@ class FreeformJSONTests: XCTestCase {
             ]
         ]
         
-        let _ = try! toString(object)
+        let _ = try toString(object)
     }
     
     // MARK: Raw initialization
     
     func testInitFromRawValue() throws {
-        let bool = try JSON(true)
+        // Cast arguments to Any to use the failable initializer and not the ExpressibleBy*Literal ones
+        let bool = try JSON(true as Any)
         XCTAssertEqual(bool.bool, true)
         
-        let int = try JSON(1)
+        let int = try JSON(1 as Any)
         XCTAssertEqual(int.number, 1)
         
-        let double = try JSON(4.2)
+        let double = try JSON(4.2 as Any)
         XCTAssertEqual(double.number, 4.2)
         
-        let string = try JSON("value")
+        let string = try JSON("value" as Any)
         XCTAssertEqual(string.string, "value")
         
-        let null = try JSON(nil)
+        let null = try JSON(nil as Any?)
         XCTAssertTrue(null.isNull)
         
         let validObject = try JSON(["name": "value"])
@@ -241,10 +245,10 @@ class FreeformJSONTests: XCTestCase {
     
     // MARK: Encodable initialization
     
-    func testInitWithEncodable() {
+    func testInitWithEncodable() throws {
         let date = Date()
         let valid = ValidEncodable(string: "value", int: 1, double: 4.2, bool: true, date: date)
-        var object = try! JSON.fromEncodable(valid)
+        var object = try JSON.fromEncodable(valid)
         
         XCTAssertEqual(object["string"].string, "value")
         XCTAssertEqual(object["int"].number, 1)
@@ -258,29 +262,28 @@ class FreeformJSONTests: XCTestCase {
         let customEncoder = JSONEncoder()
         customEncoder.dateEncodingStrategy = .formatted(dateFormatter)
         
-        object = try! JSON.fromEncodable(valid, withEncoder: customEncoder)
+        object = try JSON.fromEncodable(valid, withEncoder: customEncoder)
         XCTAssertEqual(object["date"].string, dateFormatter.string(from: date))
-        
-        XCTAssertThrowsError(try JSON.fromEncodable("test"))
     }
     
     // MARK: Raw values
     
     func testGetRawValue() throws {
-        let bool = try JSON(true)
+        // Cast arguments to Any to use the failable initializer and not the ExpressibleBy*Literal ones
+        let bool = try JSON(true as Any)
         XCTAssertEqual(bool.rawValue as? Bool, true)
         
-        let int = try JSON(1)
+        let int = try JSON(1 as Any)
         XCTAssertNil(int.rawValue as? Int)
         XCTAssertEqual(int.rawValue as? Double, 1)
         
-        let double = try JSON(4.2)
+        let double = try JSON(4.2 as Any)
         XCTAssertEqual(double.rawValue as? Double, 4.2)
         
-        let string = try JSON("value")
+        let string = try JSON("value" as Any)
         XCTAssertEqual(string.rawValue as? String, "value")
         
-        let null = try JSON(nil)
+        let null = try JSON(nil as Any?)
         XCTAssertNil(null.rawValue)
         
         let rawDict = ["name": "value"]
@@ -391,7 +394,7 @@ class FreeformJSONTests: XCTestCase {
         ("testDecodeObjectWithNull", testDecodeObjectWithNull),
         ("testDecodeArrayOfObject", testDecodeArrayOfObject),
         ("testDecodeArrayOfValue", testDecodeArrayOfValue),
-        ("testDecodeSingle", testDecodeSingle),
+        ("testDecodeFragment", testDecodeFragment),
         ("testDecodeInvalid", testDecodeInvalid),
         ("testEncodeObject", testEncodeObject),
         ("testInitFromRawValue", testInitFromRawValue),

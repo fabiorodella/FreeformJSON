@@ -53,7 +53,7 @@ let rawTags = post["tags"].rawValue! as! [String]   // ["tag1", "tag2"]
 
 ## Requirements
 
-FreeformJSON is compatible with Swift 4.x.
+FreeformJSON is compatible with Swift 4.x and later.
 All Apple platforms are supported:
 
 * iOS 9.0+
@@ -99,7 +99,7 @@ import PackageDescription
 let package = Package(
     name: "TargetName",
     dependencies: [
-        .package(url: "https://github.com/fabiorodella/FreeformJSON.git", from: "0.1.0"),
+        .package(url: "https://github.com/fabiorodella/FreeformJSON.git", from: "1.0.0"),
     ],
     targets: [
         .target(
