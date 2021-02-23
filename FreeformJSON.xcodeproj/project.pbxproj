@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1567D8D425E5271200FC112E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		15BF3DAF20443A38007C4BD6 /* FreeformJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FreeformJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BF3DB820443A38007C4BD6 /* FreeformJSON-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FreeformJSON-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BF3DCB2044406A007C4BD6 /* FreeformJSON.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = FreeformJSON.podspec; sourceTree = "<group>"; };
@@ -56,7 +57,7 @@
 		15C48C8120457FE200C1BA5C /* FreeformJSON-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FreeformJSON-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15C48C942045830D00C1BA5C /* FreeformJSONTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FreeformJSONTests.plist; sourceTree = "<group>"; };
 		15C48C952045830D00C1BA5C /* FreeformJSON.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FreeformJSON.plist; sourceTree = "<group>"; };
-		15C48C98204589B400C1BA5C /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		15C48C98204589B400C1BA5C /* Package@swift4.2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Package@swift4.2.swift"; sourceTree = "<group>"; };
 		15C48C99204589B400C1BA5C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +125,8 @@
 				15C48C3D20457B5C00C1BA5C /* Tests */,
 				15BF3DB020443A38007C4BD6 /* Products */,
 				15BF3DCB2044406A007C4BD6 /* FreeformJSON.podspec */,
-				15C48C98204589B400C1BA5C /* Package.swift */,
+				1567D8D425E5271200FC112E /* Package.swift */,
+				15C48C98204589B400C1BA5C /* Package@swift4.2.swift */,
 				15C48C99204589B400C1BA5C /* README.md */,
 			);
 			sourceTree = "<group>";
