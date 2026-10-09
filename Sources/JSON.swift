@@ -25,7 +25,7 @@
 
 import Foundation
 
-public enum JSON {
+public enum JSON: Sendable {
     case null
     case bool(Bool)
     case number(Double)

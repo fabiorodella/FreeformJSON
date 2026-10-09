@@ -1,6 +1,6 @@
 # FreeformJSON: Type-safe freeform JSON data structure with Codable support for Swift
 
-[![License](https://img.shields.io/cocoapods/l/FreeformJSON.svg?style=flat)](https://github.com/fabiorodella/FreeformJSON/blob/master/LICENSE) ![Platform](https://img.shields.io/cocoapods/p/FreeformJSON.svg?style=flat) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/FreeformJSON.svg)](https://img.shields.io/cocoapods/v/FreeformJSON.svg) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Swift PM Compatible](https://img.shields.io/badge/Swift%20PM-compatible-4BC51D.svg)](https://swift.org/package-manager/) [![Build Status](https://app.bitrise.io/app/8b02bb03920c8183/status.svg?token=2zb1ku1E2ziXfMWhHlIj9Q)](https://app.bitrise.io/app/8b02bb03920c8183)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/fabiorodella/FreeformJSON/blob/master/LICENSE) ![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg?style=flat) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Swift PM Compatible](https://img.shields.io/badge/Swift%20PM-compatible-4BC51D.svg)](https://swift.org/package-manager/) [![Build Status](https://app.bitrise.io/app/8b02bb03920c8183/status.svg?token=2zb1ku1E2ziXfMWhHlIj9Q)](https://app.bitrise.io/app/8b02bb03920c8183)
 
 FreeformJSON is a tiny data structure that allows you to create and/or access freeform JSON data in a type safe manner, while still enjoying the benefits of the Codable protocol. This can be useful if there are parts of your model that you want to have access to, but don't want the overhead of having a  `class`/`struct` for it.
 
@@ -71,18 +71,6 @@ Just drop `JSON.swift` anywhere in your own project.
 
 Download the repo, drag `FreeformJSON.xcodeproj` into your own project and link the appropriate target for your platform.
 
-### CocoaPods
-Inside your `Podfile`:
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-
-target 'TargetName' do
-use_frameworks!
-pod 'FreeformJSON'
-end
-```
-
 ### Carthage
 Inside your `Cartfile`:
 ```ogdl
@@ -92,14 +80,14 @@ github "fabiorodella/FreeformJSON"
 ### Swift Package Manager
 Inside your `Package.swift`:
 ```swift
-// swift-tools-version:4.0
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "TargetName",
     dependencies: [
-        .package(url: "https://github.com/fabiorodella/FreeformJSON.git", from: "1.0.0"),
+        .package(url: "https://github.com/fabiorodella/FreeformJSON.git", from: "1.2.0"),
     ],
     targets: [
         .target(
